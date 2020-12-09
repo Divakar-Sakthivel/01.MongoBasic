@@ -1,3 +1,5 @@
+### Basic
+
 - Connect to mongo:
 ```
 mongo "<Atlas Cluster URI>"
@@ -36,6 +38,43 @@ db.<collection_name>.find( {"field": "value"} ).count()
 db.<collection_name>.find( {"field": "value", "field": "value"} ).pretty()
 ```
 
+- Find one random document within a collection:
+```
+db.<collection_name>.findOne()
+```
+
+- Insert one document into a collection:
+```
+db.<collection_name>.insert(<json_document>)
+```
+
+- Insert multiple documents into a collection:
+```
+db.<collection_name>.insert([<json_document>, <json_document>])
+```
+
+- Insert multiple documents without order:
+```
+db.<collection_name>.insert([<json_document>, <json_document>], { "ordered": false })
+```
+Documents are inserted in order by default. 
+With the `ordered` option set as `false`, all valid documents will be inserted.
 
 
+### Update
+Updates are done by using MQL operators.
 
+- Increase a value (sum with the previous one):
+```
+db.<collection_name>.updateMany( {"fieldToQuery": "valueToFilter}, {"$inc": { "fieldToIncrement": <value_to_increment>, "fieldToIncrement": <value_to_increment>, ... }} )
+```
+
+- Set a new value:
+```
+db.<collection_name>.updateOne( {"fieldToQuery": "valueToFilter}, {$set: { "fieldToSet": <value_to_set> }} )
+```
+
+- Add a new element to an array:
+```
+db.<collection_name>.updateOne( {"fieldToQuery": "valueToFilter}, {$push: { "arrayName": <json_object_to_insert> }} )
+```
