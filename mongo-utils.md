@@ -100,3 +100,20 @@ _This will delete every file that matches with the specific criteria._
 db.<collection_name>.drop()
 ```
 
+### Query Operators
+
+```
+db.<collection_name>.find( { <field_name>: { $<operator>: <value> } } )
+```
+
+Some operators:
+- $eq: EQual to
+- $ne: Not Equal to
+- $gt: Greater Than
+- $lt:Lesser Than
+- $gte: Greater Than or Equal to
+- $lte: Lesser Than or Equal to
+
+```
+db.<collection_name>.find( { "tripduration: { $lte: 70 }, "usertype": { $ne: "Subscriber" } } )
+```
