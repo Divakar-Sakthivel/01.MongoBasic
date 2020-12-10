@@ -85,14 +85,14 @@ db.<collection_name>.updateOne( {"fieldToQuery": "valueToFilter}, {$push: { "arr
 ```
 db.<collection_name>.deleteOne( {"_id": <value>} )
 ```
-_This should be used only when deleting by id.
+_This should be used only when deleting by id._
 
 
 - Delete many documents:
 ```
 db.<collection_name>.deleteMany( {"fieldToQuery": "valueToFilter} )
 ```
-_This will delete every file that matches with the specific criteria.
+_This will delete every file that matches with the specific criteria._
 
 
 - Delete a collection:
