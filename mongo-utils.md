@@ -87,11 +87,13 @@ db.<collection_name>.deleteOne( {"_id": <value>} )
 ```
 This should be used only when deleting by id.
 
+
 - Delete many documents:
 ```
 db.<collection_name>.deleteMany( {"fieldToQuery": "valueToFilter} )
 ```
 This will delete every file that matches with the specific criteria.
+
 
 - Delete a collection:
 ```
