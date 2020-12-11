@@ -106,7 +106,7 @@ db.<collection_name>.drop()
 db.<collection_name>.find( { <field_name>: { $<operator>: <value> } } )
 ```
 
-Some operators:
+Comparison operators:
 - $eq: EQual to
 - $ne: Not Equal to
 - $gt: Greater Than
@@ -116,4 +116,28 @@ Some operators:
 
 ```
 db.<collection_name>.find( { "tripduration: { $lte: 70 }, "usertype": { $ne: "Subscriber" } } )
+```
+
+---
+
+Logic operators:
+- $and: Match all
+- $or: At least one
+- $nor: Fail to both
+- $not: Negate the query
+
+```
+db.<collection_name>.find( { <operator> : [ {statement1},{statement2},... ] } )
+```
+
+_The $not operator doesn't need [] to be used:_
+```
+db.<collection_name>.find( { $not : {statement1} } )
+```
+
+
+The default operator is $and. It must be explict only when you need to include 
+the same operator more than once in a query:
+```
+db.<collection_name>.find( { $and : [ {$or:[{dst_airport: "KZN"}, {src_airport: "KZN"}]}, {$or:[{airplane: "CR2"}, {airplane: "A18"}]} ] } )
 ```
