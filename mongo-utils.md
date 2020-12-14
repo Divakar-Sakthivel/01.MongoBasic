@@ -141,3 +141,29 @@ the same operator more than once in a query:
 ```
 db.<collection_name>.find( { $and : [ {$or:[{dst_airport: "KZN"}, {src_airport: "KZN"}]}, {$or:[{airplane: "CR2"}, {airplane: "A18"}]} ] } )
 ```
+
+Expressive Query Operator: $expr
+```
+db.<collection_name>.find({ $expr: <expression> })
+```
+
+Comparing the same field:
+```
+db.<collection_name>.find({ 
+    $expr:  {
+        $eq: ["$end station id", "$start station id"]
+    }
+}).count()
+```
+
+Example with aggregation:
+```
+db.<collection_name>.find({ 
+    $expr:  {
+        $and: [
+            { $gt: ["$tripduration", 1200] },
+            { $eq: ["$end station id", "$start station id"] }
+        ]
+    }
+}).count()
+```
