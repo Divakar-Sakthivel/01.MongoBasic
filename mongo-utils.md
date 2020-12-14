@@ -167,3 +167,25 @@ db.<collection_name>.find({
     }
 }).count()
 ```
+
+### Array:
+
+Search by exactly array size:
+```
+db.<collection_name>.find({ <array_field>: {$size: <number>} })
+```
+
+Search array with one element with the specific value:
+```
+db.<collection_name>.find({ <array_field>: [ <value> ] })
+```
+
+Search array containing at least the specific value:
+```
+db.<collection_name>.find({ <array_field>: <value> })
+```
+
+Search array containing at least all the given elements, regardless its order:
+```
+db.<collection_name>.find({ <array_field>: {$all: <array>} })
+```
